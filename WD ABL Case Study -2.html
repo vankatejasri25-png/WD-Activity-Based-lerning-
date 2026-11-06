@@ -1,0 +1,367 @@
+
+<!DOCTYPE html>
+<html >
+<head>
+<title>TravelGo - Bus & Train Booking</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+body {
+    background: #f1f5f9;
+    color: #1e293b;
+}
+header {
+    background: #123c69;
+    color: white;
+    padding: 22px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+header h1 {
+    font-size: 27px;
+}
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+}
+.hero {
+    text-align: center;
+    padding: 45px 15px;
+    background: linear-gradient(120deg,#123c69,#247ba0);
+    color: white;
+}
+.hero h2 {
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+.search-box {
+    background: white;
+    padding: 25px;
+    max-width: 950px;
+    margin: -25px auto 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px #0002;
+}
+.search-box h2 {
+    margin-bottom: 20px;
+}
+.fields {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(160px,1fr));
+    gap: 15px;
+}
+input, select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    margin-top: 8px;
+}
+button {
+    background: #f59e0b;
+    color: white;
+    border: none;
+    padding: 13px 22px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 18px;
+}
+section {
+    padding: 30px 8%;
+}
+.section-title {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #123c69;
+}
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+    gap: 20px;
+}
+.card {
+    background: white;
+    padding: 22px;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px #0001;
+}
+.card h3 {
+    color: #123c69;
+    margin-bottom: 12px;
+}
+.card p {
+    margin: 10px 0;
+    color: #475569;
+}
+.price {
+    font-size: 22px;
+    font-weight: bold;
+    color: #15803d;
+}
+.seats {
+    display: grid;
+    grid-template-columns: repeat(4,45px);
+    gap: 12px;
+    margin-top: 18px;
+}
+.seats input {
+    display: none;
+}
+.seats label {
+    background: #dcfce7;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.seats input:checked + label {
+    background: #2563eb;
+    color: white;
+}
+.seats input:disabled + label {
+    background: #cbd5e1;
+    cursor: not-allowed;
+}
+.legend {
+    margin-top: 12px;
+    font-size: 13px;
+}
+.details {
+    background: white;
+    border-radius: 10px;
+    padding: 25px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+th, td {
+    padding: 13px;
+    border: 1px solid #cbd5e1;
+    text-align: center;
+}
+th {
+    background: #123c69;
+    color: white;
+}
+footer {
+    background: #123c69;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    margin-top: 30px;
+}
+@media(max-width:600px) {
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+    nav a {
+        margin: 7px;
+    }
+    .hero h2 {
+        font-size: 24px;
+    }
+    section {
+        padding: 25px 5%;
+    }
+    table {
+        font-size: 12px;
+    }
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>TravelGo</h1>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#buses">Buses</a>
+        <a href="#trains">Trains</a>
+        <a href="#seats">Seats</a>
+    </nav>
+</header>
+
+<div class="hero" id="home">
+    <h2>Explore Your Journey With TravelGo</h2>
+    <p>Book your bus and train tickets easily</p>
+</div>
+
+<div class="search-box">
+    <h2>Search Your Journey</h2>
+    <form action="#">
+        <div class="fields">
+            <div>
+                <label>From</label>
+                <input type="text" placeholder="Source city" required>
+            </div>
+            <div>
+                <label>To</label>
+                <input type="text" placeholder="Destination city" required>
+            </div>
+            <div>
+                <label>Journey Date</label>
+                <input type="date" required>
+            </div>
+            <div>
+                <label>Passengers</label>
+                <select>
+                    <option>1 Passenger</option>
+                    <option>2 Passengers</option>
+                    <option>3 Passengers</option>
+                    <option>4 Passengers</option>
+                </select>
+            </div>
+            <div>
+                <label>Travel Type</label>
+                <select>
+                    <option>Bus</option>
+                    <option>Train</option>
+                </select>
+            </div>
+        </div>
+        <button type="submit">Search Journey</button>
+    </form>
+</div>
+
+<section id="buses">
+    <h2 class="section-title">Available Buses</h2>
+    <div class="cards">
+        <div class="card">
+            <h3>Express Travels</h3>
+            <p>Vijayawada → Hyderabad</p>
+            <p>Departure: 08:00 AM</p>
+            <p>Arrival: 02:00 PM</p>
+            <p>AC Sleeper</p>
+            <p class="price">₹750</p>
+            <button type="button">View Seats</button>
+        </div>
+        <div class="card">
+            <h3>Green Line Travels</h3>
+            <p>Vijayawada → Chennai</p>
+            <p>Departure: 09:00 PM</p>
+            <p>Arrival: 06:00 AM</p>
+            <p>Non-AC Sleeper</p>
+            <p class="price">₹650</p>
+            <button type="button">View Seats</button>
+        </div>
+        <div class="card">
+            <h3>Royal Travels</h3>
+            <p>Hyderabad → Bangalore</p>
+            <p>Departure: 07:00 PM</p>
+            <p>Arrival: 06:00 AM</p>
+            <p>AC Seater</p>
+            <p class="price">₹950</p>
+            <button type="button">View Seats</button>
+        </div>
+    </div>
+</section>
+
+<section id="trains">
+    <h2 class="section-title">Available Trains</h2>
+    <div class="cards">
+        <div class="card">
+            <h3>Vande Bharat Express</h3>
+            <p>Vijayawada → Hyderabad</p>
+            <p>Departure: 06:00 AM</p>
+            <p>Arrival: 12:00 PM</p>
+            <p>Chair Car</p>
+            <p class="price">₹950</p>
+            <button type="button">Select Train</button>
+        </div>
+        <div class="card">
+            <h3>Duronto Express</h3>
+            <p>Hyderabad → Chennai</p>
+            <p>Departure: 08:00 PM</p>
+            <p>Arrival: 07:00 AM</p>
+            <p>3AC Class</p>
+            <p class="price">₹1200</p>
+            <button type="button">Select Train</button>
+        </div>
+        <div class="card">
+            <h3>Shatabdi Express</h3>
+            <p>Vijayawada → Chennai</p>
+            <p>Departure: 07:30 AM</p>
+            <p>Arrival: 02:00 PM</p>
+            <p>Executive Chair Car</p>
+            <p class="price">₹1100</p>
+            <button type="button">Select Train</button>
+        </div>
+    </div>
+</section>
+
+<section id="seats">
+    <h2 class="section-title">Seat Selection</h2>
+    <div class="details">
+        <h3>Select Your Bus Seat</h3>
+        <p>Green: Available | Blue: Selected | Grey: Booked</p>
+        <div class="seats">
+            <input type="checkbox" id="s1">
+            <label for="s1">1</label>
+            <input type="checkbox" id="s2">
+            <label for="s2">2</label>
+            <input type="checkbox" id="s3" disabled>
+            <label for="s3">3</label>
+            <input type="checkbox" id="s4">
+            <label for="s4">4</label>
+            <input type="checkbox" id="s5">
+            <label for="s5">5</label>
+            <input type="checkbox" id="s6">
+            <label for="s6">6</label>
+            <input type="checkbox" id="s7">
+            <label for="s7">7</label>
+            <input type="checkbox" id="s8" disabled>
+            <label for="s8">8</label>
+        </div>
+        <p class="legend">Choose your preferred available seats.</p>
+    </div>
+</section>
+
+<section>
+    <h2 class="section-title">Fare Information</h2>
+    <div class="details">
+        <table>
+            <tr>
+                <th>Transport</th>
+                <th>Class</th>
+                <th>Fare</th>
+            </tr>
+            <tr>
+                <td>Bus</td>
+                <td>AC Sleeper</td>
+                <td>₹750</td>
+            </tr>
+            <tr>
+                <td>Bus</td>
+                <td>Non-AC Sleeper</td>
+                <td>₹650</td>
+            </tr>
+            <tr>
+                <td>Train</td>
+                <td>Chair Car</td>
+                <td>₹950</td>
+            </tr>
+            <tr>
+                <td>Train</td>
+  <td>3AC</td>
+ <td>₹1200</td>
+ </tr>
+ </table>
+ </div>
+</section>
+<footer>
+<h3>TravelGo - Your Journey, Our Priority</h3>
+<p>Contact: travelgo@example.com</p>
+<p> 2026 TravelGo. All Rights Reserved.</p>
+</footer>
+</body>
+</html>
+```

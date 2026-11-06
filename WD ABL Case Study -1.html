@@ -1,0 +1,512 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore India - Tourism & Heritage</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #fffaf0;
+            color: #333;
+        }
+
+        header {
+            background-color: #173b35;
+            color: white;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        header h1 {
+            color: #ffcc66;
+            font-size: 28px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 10px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #ffcc66;
+        }
+
+        .hero {
+            height: 450px;
+            background: linear-gradient(
+                rgba(0,0,0,0.5),
+                rgba(0,0,0,0.5)
+            ),
+            url("https://images.unsplash.com/photo-1564507592333-c60657eea523?w=1400")
+            center/cover no-repeat;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+
+        .hero h2 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 19px;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #e68a32;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background-color: #b9651e;
+        }
+
+        section {
+            padding: 50px 8%;
+            text-align: center;
+        }
+
+        section h2 {
+            color: #173b35;
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+
+        .intro {
+            background-color: #f5e6cc;
+            line-height: 1.8;
+        }
+
+        .destination-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 25px;
+        }
+
+        .destination-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px #ddd;
+            transition: transform 0.3s;
+        }
+
+        .destination-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .destination-card img {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+        }
+
+        .destination-info {
+            padding: 20px;
+            line-height: 1.7;
+        }
+
+        .destination-info h3 {
+            color: #d47727;
+            margin-bottom: 10px;
+        }
+
+        .regions {
+            background-color: #e7f0e8;
+        }
+
+        .region-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .region-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px #ccc;
+            line-height: 1.8;
+        }
+
+        .region-card h3 {
+            color: #d47727;
+            margin-bottom: 10px;
+        }
+
+        .festivals {
+            background-color: #fff1dc;
+        }
+
+        .festival-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 20px;
+        }
+
+        .festival-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px #ddd;
+            line-height: 1.7;
+        }
+
+        .festival-card h3 {
+            color: #d47727;
+            margin-bottom: 10px;
+        }
+
+        .food-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .food-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px #ddd;
+        }
+
+        .food-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .food-card h3 {
+            padding: 15px;
+            color: #d47727;
+        }
+
+        .gallery {
+            background-color: #e7f0e8;
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-container img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 12px;
+            transition: transform 0.3s;
+        }
+
+        .gallery-container img:hover {
+            transform: scale(1.04);
+        }
+
+        .tips-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .tip-card {
+            background: #f5e6cc;
+            padding: 22px;
+            border-radius: 12px;
+            line-height: 1.7;
+        }
+
+        .tip-card h3 {
+            color: #173b35;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background-color: #173b35;
+            color: white;
+            padding: 30px;
+            text-align: center;
+            line-height: 2;
+        }
+
+        footer h2 {
+            color: #ffcc66;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav {
+                text-align: center;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 7px;
+                font-size: 14px;
+            }
+
+            .hero h2 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            section {
+                padding: 35px 5%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>🌍 Explore India</h1>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#destinations">Destinations</a>
+            <a href="#regions">Regions</a>
+            <a href="#festivals">Festivals</a>
+            <a href="#food">Cuisine</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#tips">Travel Tips</a>
+        </nav>
+    </header>
+
+    <div class="hero" id="home">
+        <div>
+            <h2>Discover the Beauty of India</h2>
+            <p>Explore historical places, culture, traditions and delicious food.</p>
+            <a href="#destinations" class="btn">Explore Destinations</a>
+        </div>
+    </div>
+
+    <section class="intro">
+        <h2>Welcome to Explore India</h2>
+        <p>
+            India is a beautiful country known for its rich history,
+            cultural diversity, ancient monuments, colorful festivals
+            and traditional food. Explore amazing destinations and
+            discover the beauty of Indian heritage.
+        </p>
+    </section>
+
+    <section id="destinations">
+        <h2>Famous Destinations</h2>
+
+        <div class="destination-container">
+
+            <div class="destination-card">
+                <img src="https://images.unsplash.com/photo-1564507592333-c60657eea523?w=500" alt="Taj Mahal">
+                <div class="destination-info">
+                    <h3>Taj Mahal</h3>
+                    <p>Location: Agra, Uttar Pradesh</p>
+                    <p>A beautiful marble monument and symbol of love.</p>
+                </div>
+            </div>
+
+            <div class="destination-card">
+                <img src="https://images.unsplash.com/photo-1602643163983-ed0babc39797?w=500" alt="Jaipur Palace">
+                <div class="destination-info">
+                    <h3>Hawa Mahal</h3>
+                    <p>Location: Jaipur, Rajasthan</p>
+                    <p>Famous for its beautiful architecture and windows.</p>
+                </div>
+            </div>
+
+            <div class="destination-card">
+                <img src="https://images.unsplash.com/photo-1599661046827-dacff0c0f09a?w=500" alt="Kerala">
+                <div class="destination-info">
+                    <h3>Kerala Backwaters</h3>
+                    <p>Location: Kerala</p>
+                    <p>Known for peaceful waterways and green landscapes.</p>
+                </div>
+            </div>
+
+            <div class="destination-card">
+                <img src="https://images.unsplash.com/photo-1477587458883-47145ed94245?w=500" alt="Varanasi">
+                <div class="destination-info">
+                    <h3>Varanasi</h3>
+                    <p>Location: Uttar Pradesh</p>
+                    <p>Famous for ancient temples and Ganga river ghats.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="regions" id="regions">
+        <h2>Explore by Region</h2>
+
+        <div class="region-container">
+
+            <div class="region-card">
+                <h3>North India</h3>
+                <p>Agra - Taj Mahal</p>
+                <p>Delhi - Red Fort</p>
+                <p>Jaipur - Hawa Mahal</p>
+            </div>
+
+            <div class="region-card">
+                <h3>South India</h3>
+                <p>Kerala - Backwaters</p>
+                <p>Tamil Nadu - Meenakshi Temple</p>
+                <p>Andhra Pradesh - Tirupati</p>
+            </div>
+
+            <div class="region-card">
+                <h3>East India</h3>
+                <p>West Bengal - Victoria Memorial</p>
+                <p>Odisha - Konark Sun Temple</p>
+                <p>Assam - Kaziranga</p>
+            </div>
+
+            <div class="region-card">
+                <h3>West India</h3>
+                <p>Gujarat - Rann of Kutch</p>
+                <p>Maharashtra - Gateway of India</p>
+                <p>Goa - Beaches</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="festivals" class="festivals">
+        <h2>Indian Cultural Festivals</h2>
+
+        <div class="festival-container">
+
+            <div class="festival-card">
+                <h3>🎆 Diwali</h3>
+                <p>Festival of lights celebrated with lamps, sweets and fireworks.</p>
+            </div>
+
+            <div class="festival-card">
+                <h3>🎨 Holi</h3>
+                <p>Festival of colors celebrated with joy, music and colors.</p>
+            </div>
+
+            <div class="festival-card">
+                <h3>🌾 Pongal</h3>
+                <p>A harvest festival celebrated mainly in Tamil Nadu.</p>
+            </div>
+
+            <div class="festival-card">
+                <h3>💃 Navratri</h3>
+                <p>A nine-day festival celebrated with traditional dance and devotion.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="food">
+        <h2>Traditional Indian Cuisine</h2>
+
+        <div class="food-container">
+
+            <div class="food-card">
+                <img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=500" alt="Biryani">
+                <h3>Hyderabadi Biryani</h3>
+            </div>
+
+            <div class="food-card">
+                <img src="https://images.unsplash.com/photo-1630383249896-424e482df921?w=500" alt="Dosa">
+                <h3>Masala Dosa</h3>
+            </div>
+
+            <div class="food-card">
+                <img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=500" alt="Indian Curry">
+                <h3>Indian Curry</h3>
+            </div>
+
+            <div class="food-card">
+                <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=500" alt="Samosa">
+                <h3>Samosa</h3>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="gallery" id="gallery">
+        <h2>Travel Image Gallery</h2>
+
+        <div class="gallery-container">
+            <img src="https://images.unsplash.com/photo-1548013146-72479768bada?w=500" alt="Indian monument">
+            <img src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=500" alt="Indian beach">
+            <img src="https://images.unsplash.com/photo-1532375810709-75b1da00537c?w=500" alt="Indian architecture">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=500" alt="Nature">
+            <img src="https://images.unsplash.com/photo-1477587458883-47145ed94245?w=500" alt="Indian heritage">
+            <img src="https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=500" alt="Travel destination">
+        </div>
+    </section>
+
+    <section id="tips">
+        <h2>Travel Tips</h2>
+
+        <div class="tips-container">
+
+            <div class="tip-card">
+                <h3>🎒 Pack Smart</h3>
+                <p>Carry comfortable clothes, medicines and necessary travel items.</p>
+            </div>
+
+            <div class="tip-card">
+                <h3>📷 Capture Memories</h3>
+                <p>Take photographs and respect photography rules at monuments.</p>
+            </div>
+
+            <div class="tip-card">
+                <h3>💧 Stay Healthy</h3>
+                <p>Drink safe water and carry essential medicines.</p>
+            </div>
+
+            <div class="tip-card">
+                <h3>🤝 Respect Culture</h3>
+                <p>Respect local traditions, customs and religious places.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <h2>🌍 Explore India</h2>
+        <p>Discover | Travel | Experience | Celebrate</p>
+        <p>Explore the beauty and heritage of Incredible India.</p>
+        <p>Contact: exploreindia@example.com</p>
+        <p>© 2026 Explore India. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
